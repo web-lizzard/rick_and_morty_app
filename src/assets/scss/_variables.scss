@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+
+:root {
+  --ff-sans-serif: "Source Sans Pro", sans-serif;
+
+  --dark-blue: #324b72;
+  --light-blue: #4eadc5;
+  --light-grey: #f5f8fb;
+  --grey: #e0e0e0;
+  --red: #de212b;
+
+  --fs-500: 1.5rem;
+  --fs-400: 1rem;
+  --fs-300: 0.875rem;
+
+  @media (min-width: 64rem) {
+    --fs-500: 2.25rem;
+  }
+}
