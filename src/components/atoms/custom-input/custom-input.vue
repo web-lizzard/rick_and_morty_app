@@ -4,11 +4,12 @@ import CustomLabel from '../custom-label/custom-label.vue'
 
  withDefaults(defineProps<{
   element?: InputType,
-  errorMessage: string
+  errorMessage?: string
   label?: string
 }>(), {
-  element: InputType.TEXTAREA,
-  label: 'Placeholder'
+  element: InputType.INPUT,
+  label: 'Placeholder',
+  errorMessage: ''
 })
 
 const emit = defineEmits<{

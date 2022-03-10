@@ -43,6 +43,7 @@ const handleDropdownOpen = () => {
        @blur="handleBlur"
        @keydown.esc="emit('close-dropdown')">
     <button :class="['custom-dropdown__button', isOpen && 'custom-dropdown__button--open']"
+            type="button"
             @click="handleDropdownOpen">
       {{ buttonLabel }}
       <icon-arrow :class="['custom-dropdown__arrow', isOpen && 'custom-dropdown__arrow--open']" />

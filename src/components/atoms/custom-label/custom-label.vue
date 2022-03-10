@@ -22,7 +22,7 @@ withDefaults(defineProps<{
   </label>
 </template>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .custom-label {
     display: flex;
     flex-direction: column;

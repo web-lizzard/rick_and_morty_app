@@ -1,4 +1,5 @@
-<script setup lang='ts'>import { useRouter } from 'vue-router';
+<script setup lang='ts'>
+    import { useRouter } from 'vue-router';
 
     const router = useRouter();
 
@@ -37,6 +38,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.25rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     @media(min-width: 64rem) {
         padding: 1rem 13.5rem;

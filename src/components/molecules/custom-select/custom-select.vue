@@ -7,15 +7,19 @@ import { Options } from './custom-select.types'
 
 type Props = {
   modelValue?: string;
-  defaulButtonLabel?: string;
+  defaultButtonLabel?: string;
+  errorMessage?: string;
   options?: Options[]
+  label?: string;
 
 }
 
 const props = withDefaults(defineProps<Props>(), {
   modelValue: '',
-  defaulButtonLabel: 'Placeholder',
-  options: () => []
+  defaultButtonLabel: 'Placeholder',
+  options: () => [],
+  label: 'Placeholder',
+  errorMessage: ''
 })
 
 const emit = defineEmits<{
@@ -27,7 +31,7 @@ const { isOpen, openElement, closeElement } = useOpenElement()
 
 const selectedOption = computed(() => {
   const selectedOption = props.options.find((option) => props.modelValue === option.value)
-  return selectedOption?.name ?? props.defaulButtonLabel
+  return selectedOption?.name ?? props.defaultButtonLabel
 })
 
 
@@ -35,12 +39,14 @@ const selectedOption = computed(() => {
 
 
 <template> 
-  <CustomLabel @focus="openElement">
-    <CustomDropdown class="custom-dropdown"
-                    :is-open="isOpen"
-                    :button-label="selectedOption"
-                    @close-dropdown="closeElement"
-                    @open-dropdown="openElement">
+  <custom-label :label="label"
+                :error-message="errorMessage"
+                @focus="openElement">
+    <custom-dropdown class="custom-dropdown"
+                     :is-open="isOpen"
+                     :button-label="selectedOption"
+                     @close-dropdown="closeElement"
+                     @open-dropdown="openElement">
       <ul class="custom-dropdown__list">
         <li v-for="option in options"
             :key="option.value"
@@ -50,8 +56,8 @@ const selectedOption = computed(() => {
           {{ option.name }}
         </li>
       </ul>
-    </CustomDropdown>
-  </CustomLabel>
+    </custom-dropdown>
+  </custom-label>
 </template>
 
 <style lang='scss'>

@@ -1,25 +1,31 @@
 <script setup lang="ts">
-import CustomDropdown from '@/components/molecules/custom-dropdown/custom-dropdown.vue';
-import { useOpenElement } from '@/composables/use-open-element';
-import CustomSelect from '@/components/molecules/custom-select/custom-select.vue';
-import { ref } from 'vue';
-const options = [{ name: 'Rick', value: '1' }, { name: 'Morty', value: '2' }]
-const value = ref('')
+import MessageForm from '@/components/organisms/message-form/message-form.vue'
+import CustomTitle from '@/components/atoms/custom-title/custom-title.vue';
+import { TitleType } from '@/components/atoms/custom-title/custom-title.types'
 
 
 </script>
 
 <template>
-  {{ value }}
-  <CustomSelect v-model="value"
-                :options="options" />
+  <CustomTitle :type="TitleType.MainHeading"
+               text="Send a new message" />
+  <MessageForm />
 </template>
 
 
 <style lang="scss" scoped>
+    h1 {
+      max-width: 13ch;
+    }
+  
+  @media (min-width: 64rem) {
+  
 
-h1 {
-  font-size: var(--fs-500);
-}
+    h1 {
+      max-width: 100%;
+      text-align: center
+    }
+  }
+
 
 </style>

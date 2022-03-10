@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import CustomNavigation from './components/organisms/custom-navigation/custom-navigation.vue';
+import MainTemplate from '@/components/templates/main-template/main-template.vue'
 </script>
 
 <template>
-  <CustomNavigation />
-  <router-view />
+  <main-template />
 </template>
