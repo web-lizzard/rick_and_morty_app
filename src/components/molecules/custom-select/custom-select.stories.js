@@ -1,8 +1,7 @@
 import CustomSelect from './custom-select.vue';
 
 export default {
-
-  title: 'atoms/CustomSelect',
+  title: 'molecules/CustomSelect',
   component: CustomSelect,
 };
 
@@ -10,8 +9,9 @@ export const Primary = (args) => ({
   components: { CustomSelect },
   setup() {
     return {
-      args
+      args,
+   
     }
   },
-  template: '<custom-select v-bind="args" />',
+  template: '<custom-select  />',
 });
