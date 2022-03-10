@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useOpenElement } from '../../../composables/use-open-element';
 import CustomLabel from '../../atoms/custom-label/custom-label.vue';
 import CustomDropdown from '../custom-dropdown/custom-dropdown.vue';
-import { Options } from './custom-select.types'
+import type { Options } from './custom-select.types'
 
 type Props = {
   modelValue?: string;

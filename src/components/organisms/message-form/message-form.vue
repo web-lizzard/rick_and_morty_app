@@ -2,9 +2,14 @@
 import CustomInput from '../../atoms/custom-input/custom-input.vue';
 import CustomButton from '../../atoms/custom-button/custom-button.vue';
 import CustomSelect from '../../molecules/custom-select/custom-select.vue';
+import type { Options } from '../../molecules/custom-select/custom-select.types';
 import { computed, reactive, ref } from 'vue';
 import type { FormState } from './message-form.types'
 import  { InputType } from '../../atoms/custom-input/custom-input.types'
+
+defineProps<{
+    characters: Options[]
+}>()
 
 const emit = defineEmits<{
     (e: 'add-message', message: FormState ): void
@@ -13,7 +18,7 @@ const emit = defineEmits<{
 const formState: FormState = reactive({
     title: '',
     message:'',
-    character: 'ss'
+    character: ''
 })
 
 const isSubmitting = ref(false)
@@ -40,18 +45,21 @@ const rules = computed((): FormState => {
 })
 
 const validateForm = () => {
-    return Object.values(rules.value).some(value => value.length);
+    return !Object.values(rules.value).some(value => value.length);
 
 }
 
 const handleSubmit = () => {
     isSubmitting.value = true;
-    validateForm() && emit('add-message', formState)
+    const isValid = validateForm()
+    isValid && emit('add-message', formState)
 }
 
 </script>
 
 <template>
+  {{ formState.character }}
+
   <form class="message-form"
         @submit.prevent="handleSubmit">
     <custom-input v-model="formState.title"
@@ -66,7 +74,8 @@ const handleSubmit = () => {
     <custom-select v-model="formState.character"
                    :error-message="rules.character"
                    default-button-label="Pick a character"
-                   label="Character" />
+                   label="Character"
+                   :options="characters" />
     
     <custom-button class="message-form__button"
                    type="submit">
