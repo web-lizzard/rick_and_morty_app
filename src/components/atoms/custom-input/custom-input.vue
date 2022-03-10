@@ -1,19 +1,35 @@
 <script setup lang='ts'>
 import { InputType } from './custom-input.types'
+import CustomLabel from '../custom-label/custom-label.vue'
 
  withDefaults(defineProps<{
   element?: InputType,
   errorMessage: string
+  label?: string
 }>(), {
-  element: InputType.TEXTAREA
+  element: InputType.TEXTAREA,
+  label: 'Placeholder'
 })
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void
+}>()
+
+const handleInput = (e: Event) => {
+  emit('update:modelValue', (e.target as HTMLInputElement).value);
+}
+
 
 </script>
 
 <template>
-  <component :is="element"
-             :class="['custom-input', errorMessage && 'custom-input--error']"
-             v-bind="$attrs" />
+  <custom-label :label="label"
+                :error-message="errorMessage">
+    <component :is="element"
+               :class="['custom-input', errorMessage && 'custom-input--error']"
+               v-bind="$attrs"
+               @input="handleInput" />
+  </custom-label>
 </template>
 
 <style lang='scss' scoped>
@@ -26,12 +42,17 @@ import { InputType } from './custom-input.types'
 
         &--error {
           border: 1px solid var(--red);
+
+          &:focus {
+          outline: 1px solid var(--red);   
+          }
         }
 
         &:focus {
           outline: 1px solid var(--dark-blue);
         }
-    }
+
+}
 
     textarea {
           resize: none;
