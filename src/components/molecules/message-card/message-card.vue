@@ -1,19 +1,31 @@
 <script setup lang='ts'>
-import CustomCard from '../../atoms/custom-card/custom-card.vue';</script>
+import { format } from 'date-fns';
+import type { Message } from './message-cars.types'
+import CustomCard from '../../atoms/custom-card/custom-card.vue';
+import { TitleType } from '../../atoms/custom-title/custom-title.types'
+import CustomTitle from '../../atoms/custom-title/custom-title.vue';
+import CustomPortrait from '../../atoms/portrait-container/custom-portrait.vue';
+import { computed } from 'vue';
+
+const props = defineProps<{message: Message}>()
+
+const formattedDate = computed(() => format(props.message.date, 'dd.MM.yyyy'))
+
+
+</script>
 
 <template>
   <custom-card class="message-card">
-    <h1>title</h1>
-    <img src="./1 1.png"
-         alt="Rick">
+    <custom-title :type="TitleType.SubHeading"
+                  :text="message.title" />
+    <custom-portrait :image-src="message.image"
+                     :name="message.name" />
     <div>
-      <p>Data</p>
-      <p>Data</p>
+      <p>Sent to: {{ message.name }} </p>
+      <p>Date: {{ formattedDate }}</p>
     </div>
     <p class="message-card__content">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-      Veritatis illum natus provident debitis nihil numquam reiciendis ex recusandae aperiam, 
-      possimus nostrum beatae libero facere inventore odit at quo? Omnis, ratione.
+      {{ message.content }}
     </p>
   </custom-card>
 </template>
@@ -30,7 +42,7 @@ import CustomCard from '../../atoms/custom-card/custom-card.vue';</script>
     gap: 1.5rem 1rem;
     align-items: center;
 
-    h1 { 
+    h2 { 
         grid-area: title;
     }
 
