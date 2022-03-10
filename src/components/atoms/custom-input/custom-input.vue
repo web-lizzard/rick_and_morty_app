@@ -19,7 +19,6 @@ const handleInput = (e: Event) => {
   emit('update:modelValue', (e.target as HTMLInputElement).value);
 }
 
-
 </script>
 
 <template>

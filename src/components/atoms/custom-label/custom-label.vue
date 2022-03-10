@@ -29,6 +29,7 @@ withDefaults(defineProps<{
     gap: 0.5rem;
     font-size: var(--fs-300);
     position: relative;
+    cursor: pointer;
 
     &--error {
         color: var(--red);
@@ -39,6 +40,7 @@ withDefaults(defineProps<{
         position: absolute;
         bottom: 0;
         transform: translateY(150%);
+        transition: transform .2s ease-in-out;
     }
 }
 
