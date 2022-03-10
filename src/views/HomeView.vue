@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import CustomDropdown from '@/components/molecules/custom-dropdown/custom-dropdown.vue';
+import { useOpenElement } from '@/composables/use-open-element';
+
+const { isOpen, openElement, closeElement } = useOpenElement()
+
 </script>
 
 <template>
-  <div>placeholder</div>
-  <h1>test clamp fs</h1>
+  <CustomDropdown :is-open="isOpen"
+                  @open-dropdown="openElement"
+                  @close-dropdown="closeElement" />
 </template>
 
 

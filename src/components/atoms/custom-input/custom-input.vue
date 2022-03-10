@@ -8,9 +8,6 @@ import { InputType } from './custom-input.types'
   element: InputType.TEXTAREA
 })
 
-
-
-
 </script>
 
 <template>
