@@ -20,15 +20,15 @@ characterStore.getMessages()
   </main>
 </template>
 
-<style lang="scss" scoped="true">
+<style lang="scss" scoped>
     .main-template {
-      width: min(100% - 4rem, 30rem);
+      width: 100%;
       margin-inline: auto;
-      padding-top: 4rem;
+      padding: 4rem 1rem;
 
 
-      @media (min-width: 64rem) {
-                padding-top: 4.75rem;  
+      @media (min-width: 64rem) {  
+                width: 30rem;
            
       }
     }

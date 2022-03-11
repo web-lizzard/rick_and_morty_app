@@ -72,7 +72,6 @@ const handleDropdownOpen = () => {
             border: 1px solid var(--grey);
             border-radius: 8px;
             background: transparent;
-            position: relative;
             padding: 0.5rem;
             color: var(--dark-blue);
             display: flex;
@@ -97,9 +96,6 @@ const handleDropdownOpen = () => {
 
         &__content {
             transform-origin: top;
-            border: 1px solid var(--grey);  
-            border-radius: 0 0 8px 8px;
-            border-top: none; 
           }
     }
 

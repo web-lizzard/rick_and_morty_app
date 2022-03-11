@@ -35,10 +35,10 @@ const rules = computed((): FormState => {
     && 'This field is too short' 
     || formState.title.length >= 36
     && 'This field is too long' 
-    || formState.title.match(/\W|_/g)
+    || !formState.title.match(/^[a-zA-Z\s]*$/g)
     && 'Special character is not allowed' 
     || '';
-    formRules.content = formState.content.length < 256 && 'This field is too short' || '';
+    formRules.content = formState.content.length > 256 && 'This field is too long' || '';
     formRules.characterId = !formState.characterId.length && 'This field is required' || ''; 
 
     return formRules
@@ -52,7 +52,11 @@ const validateForm = () => {
 const handleSubmit = () => {
     isSubmitting.value = true;
     const isValid = validateForm()
-    isValid && emit('add-message', formState)
+    if(!isValid) return
+    emit('add-message', formState);
+    isSubmitting.value = false;
+    Object.assign(formState, reactive({ title: '', characterId: '', content: '' }))
+
 }
 
 </script>
@@ -63,6 +67,7 @@ const handleSubmit = () => {
     <custom-input v-model="formState.title"
                   label="Title"
                   :error-message="rules.title" />
+                
     
     <custom-input v-model="formState.content"
                   label="Message"

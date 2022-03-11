@@ -47,6 +47,7 @@ const formattedDate = computed(() => format(props.message.date, 'dd.MM.yyyy'))
     }
 
     &__content { 
+        word-wrap: break-word;
         grid-area: content;
     }
 }

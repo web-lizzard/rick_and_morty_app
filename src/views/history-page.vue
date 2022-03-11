@@ -28,6 +28,7 @@ const messages = computed(() => characterStore.messages)
         display: flex;
         flex-direction: column;
         gap: 2.2rem;
+        margin-bottom: 2rem;
     }
 
 </style>

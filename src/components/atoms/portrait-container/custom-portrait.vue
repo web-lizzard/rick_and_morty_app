@@ -23,18 +23,29 @@ const portraitContent = computed(() => props.imageSrc
   </div>
 </template>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .portrait-content {
     width: 3rem;
     aspect-ratio: 1;
     font-size: var(--fs-400);
     font-weight: bold;
     background: var(--light-blue);
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    
+    img {
+      object-fit: cover;
+    }
+
+    img, 
+    span {
+       border-radius: 50%;
+    }
+
+    span {
+        color: white;
+    }
 }
 
 

@@ -6,17 +6,19 @@ import CustomLabel from '../custom-label/custom-label.vue'
   element?: InputType,
   errorMessage?: string
   label?: string
+  modelValue?: string
 }>(), {
   element: InputType.INPUT,
   label: 'Placeholder',
-  errorMessage: ''
+  errorMessage: '',
+  modelValue: ''
 })
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
-const handleInput = (e: Event) => {
+const handleInput = (e: Event) => {  
   emit('update:modelValue', (e.target as HTMLInputElement).value);
 }
 
@@ -28,6 +30,7 @@ const handleInput = (e: Event) => {
     <component :is="element"
                :class="['custom-input', errorMessage && 'custom-input--error']"
                v-bind="$attrs"
+               :value="modelValue"
                @input="handleInput" />
   </custom-label>
 </template>

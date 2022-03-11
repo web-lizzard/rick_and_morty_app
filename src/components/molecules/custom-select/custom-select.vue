@@ -30,7 +30,7 @@ const { isOpen, openElement, closeElement } = useOpenElement()
 
 
 const selectedOption = computed(() => {
-  const selectedOption = props.options.find((option) => props.modelValue === option.value)
+  const selectedOption = props.options.find(({ value }) => props.modelValue === value)
   return selectedOption?.name ?? props.defaultButtonLabel
 })
 
@@ -42,15 +42,15 @@ const selectedOption = computed(() => {
   <custom-label :label="label"
                 :error-message="errorMessage"
                 @focus="openElement">
-    <custom-dropdown class="custom-dropdown"
+    <custom-dropdown class="custom-select"
                      :is-open="isOpen"
                      :button-label="selectedOption"
                      @close-dropdown="closeElement"
                      @open-dropdown="openElement">
-      <ul class="custom-dropdown__list">
+      <ul class="custom-select__list">
         <li v-for="option in options"
             :key="option.value"
-            class="custom-dropdown__list-item"
+            class="custom-select__list-item"
             :value="option.value"
             @click="emit('update:modelValue', option.value)">
           {{ option.name }}
@@ -61,13 +61,23 @@ const selectedOption = computed(() => {
 </template>
 
 <style lang='scss'>
-.custom-dropdown {
+.custom-select {
+  position: relative;
   &__list {
-    list-style: none;
+            border: 1px solid var(--grey);  
+            border-radius: 0 0 8px 8px;
+            border-top: none; 
+            z-index: 10;
+            position: absolute;
+            width: 100%;
+            max-height: 10rem;
+            position: absolute;
+            background-color: white;
+            overflow: auto;
   }
 
   &__list-item {
-    padding: 0.5rem;
+    padding: 0.875rem 0.625rem;
 
     &:hover {
       background: var(--light-grey);

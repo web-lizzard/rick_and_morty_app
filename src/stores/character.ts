@@ -1,9 +1,10 @@
+import axios from 'axios';
+import { defineStore } from 'pinia';
 import type { Options } from '@/components/molecules/custom-select/custom-select.types';
 import type { Message } from '@/components/molecules/message-card/message-cars.types'
 import type { FormState } from '@/components/organisms/message-form/message-form.types';
 import type { Character } from '@/types';
-import axios from 'axios';
-import { defineStore } from 'pinia';
+
 
 type Store = {
     characters: Character[],
