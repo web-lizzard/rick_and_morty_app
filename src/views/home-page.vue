@@ -22,17 +22,10 @@ characterStore.getCharacters()
 
 
 <style lang="scss" scoped>
-    h1 {
-      max-width: 13ch;
-    }
+ 
   
   @media (min-width: 64rem) {
-  
 
-    h1 {
-      max-width: 100%;
-      text-align: center
-    }
   }
 
 

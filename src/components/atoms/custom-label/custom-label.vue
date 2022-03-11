@@ -38,6 +38,7 @@ withDefaults(defineProps<{
     &__error-message {
         color: var(--red);
         position: absolute;
+        z-index: 1;
         bottom: 0;
         transform: translateY(150%);
         transition: transform .2s ease-in-out;

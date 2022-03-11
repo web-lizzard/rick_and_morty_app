@@ -14,7 +14,7 @@ characterStore.getMessages()
 </script>
 
 <template>
-  <CustomNavigation />
+  <custom-navigation />
   <main class="main-template">  
     <router-view />
   </main>

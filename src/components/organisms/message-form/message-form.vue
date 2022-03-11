@@ -95,7 +95,7 @@ const handleSubmit = () => {
 
         &__button {
             margin: 0;
-            margin-top: 14rem;
+            margin-top: 12rem;
             align-self: flex-end;
         }
     }
