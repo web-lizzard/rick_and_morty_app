@@ -15,7 +15,7 @@ characterStore.getMessages()
 
 <template>
   <custom-navigation />
-  <main class="main-template">  
+  <main class="main-template"> 
     <router-view />
   </main>
 </template>
@@ -32,6 +32,5 @@ characterStore.getMessages()
            
       }
     }
-    
 
 </style>
