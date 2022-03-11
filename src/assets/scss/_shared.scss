@@ -1,0 +1,17 @@
+@keyframes fadeAnimation {
+  0% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.fade-list-enter-active {
+  animation: fadeAnimation 0.2s ease-in-out;
+}
+
+.fade-list-leave-active {
+  animation: fadeAnimation 0.1s ease-in-out reverse;
+}
