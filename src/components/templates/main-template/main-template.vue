@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import CustomNavigation from '@/components/organisms/custom-navigation/custom-navigation.vue';
+import { useCharacterStore } from '@/stores/character';
+
+const characterStore = useCharacterStore()
+
+characterStore.$subscribe((mutation, state) => {
+          localStorage.setItem('messages', JSON.stringify(state.messages));
+})
+
+characterStore.getMessages()
+
+
 </script>
 
 <template>

@@ -17,8 +17,8 @@ const emit = defineEmits<{
 
 const formState: FormState = reactive({
     title: '',
-    message:'',
-    character: ''
+    content:'',
+    characterId: ''
 })
 
 const isSubmitting = ref(false)
@@ -26,8 +26,8 @@ const isSubmitting = ref(false)
 const rules = computed((): FormState => {
     const formRules = {
         title: '',
-        message: '',
-        character: ''
+        content: '',
+        characterId: ''
     }
     if(!isSubmitting.value) return formRules
     
@@ -38,8 +38,8 @@ const rules = computed((): FormState => {
     || formState.title.match(/\W|_/g)
     && 'Special character is not allowed' 
     || '';
-    formRules.message = formState.message.length < 256 && 'This field is too short' || '';
-    formRules.character = !formState.character.length && 'This field is required' || ''; 
+    formRules.content = formState.content.length < 256 && 'This field is too short' || '';
+    formRules.characterId = !formState.characterId.length && 'This field is required' || ''; 
 
     return formRules
 })
@@ -58,21 +58,19 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  {{ formState.character }}
-
   <form class="message-form"
         @submit.prevent="handleSubmit">
     <custom-input v-model="formState.title"
                   label="Title"
                   :error-message="rules.title" />
     
-    <custom-input v-model="formState.message"
+    <custom-input v-model="formState.content"
                   label="Message"
-                  :error-message="rules.message"
+                  :error-message="rules.content"
                   :element="InputType.TEXTAREA" />
     
-    <custom-select v-model="formState.character"
-                   :error-message="rules.character"
+    <custom-select v-model="formState.characterId"
+                   :error-message="rules.characterId"
                    default-button-label="Pick a character"
                    label="Character"
                    :options="characters" />

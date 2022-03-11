@@ -18,22 +18,27 @@ export const useCharacterStore = defineStore({
         }
     },
     actions: {
+        getMessages() {
+            const messages = localStorage.getItem('messages');
+            if(!messages) return
+            this.messages = JSON.parse(messages) 
+        },
+
         async getCharacters() {
             const { data } = await axios.get('https://rickandmortyapi.com/api/character')
             this.characters = data.results
         },
-        addMessage({ character, ...payload }: FormState) {
-            const char = this.characters.find(({ id }) => id == character)
+        addMessage({ characterId, ...payload }: FormState) {
+            const char = this.characters.find(({ id }) => id == characterId)
             if(!char) return;
             const message = {
                 ...payload,
                 image: char.image || '',
                 name: char.name,
-                date: new Date()
+                date: Date.now(),
+                id: characterId
             }
-            const messages = JSON.parse(localStorage.getItem('messages') as string) || [...this.messages];
-            this.messages = [ message, ...messages ]
-            localStorage.setItem('messages', JSON.stringify(this.messages))
+            this.messages = [ message, ...this.messages ]
 
 
         }
