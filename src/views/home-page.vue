@@ -14,10 +14,10 @@ characterStore.getCharacters()
 </script>
 
 <template>
-  <CustomTitle :type="TitleType.MainHeading"
-               text="Send a new message" />
-  <MessageForm :characters="characters"
-               @add-message="characterStore.addMessage" />
+  <custom-title :type="TitleType.MainHeading"
+                text="Send a new message" />
+  <message-form :characters="characters"
+                @add-message="characterStore.addMessage" />
 </template>
 
 

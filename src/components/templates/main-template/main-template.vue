@@ -4,7 +4,7 @@ import { useCharacterStore } from '@/stores/character';
 
 const characterStore = useCharacterStore()
 
-characterStore.$subscribe((mutation, state) => {
+characterStore.$subscribe((_, state) => {
           localStorage.setItem('messages', JSON.stringify(state.messages));
 })
 
@@ -32,5 +32,6 @@ characterStore.getMessages()
            
       }
     }
+    
 
 </style>

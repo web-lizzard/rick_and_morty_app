@@ -17,9 +17,11 @@ const portraitContent = computed(() => props.imageSrc
 <template>
   <div class="portrait-content">
     <img v-if="imageSrc"
+         class="portrait-content__image"
          :src="portraitContent"
          :alt="name">
-    <span v-else>{{ portraitContent }}</span>
+    <span v-else
+          class="portrait-content__fallback">{{ portraitContent }}</span>
   </div>
 </template>
 
@@ -33,19 +35,13 @@ const portraitContent = computed(() => props.imageSrc
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
     
-    img {
-      object-fit: cover;
-    }
+   &__image {
+     object-fit: center;
+     border-radius: 50%;
+   }
 
-    img, 
-    span {
-       border-radius: 50%;
-    }
-
-    span {
-        color: white;
-    }
 }
 
 
