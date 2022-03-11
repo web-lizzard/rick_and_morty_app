@@ -20,13 +20,3 @@ characterStore.getCharacters()
                 @add-message="characterStore.addMessage" />
 </template>
 
-
-<style lang="scss" scoped>
- 
-  
-  @media (min-width: 64rem) {
-
-  }
-
-
-</style>

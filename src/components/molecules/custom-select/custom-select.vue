@@ -28,11 +28,16 @@ const emit = defineEmits<{
 
 const { isOpen, openElement, closeElement } = useOpenElement()
 
-
 const selectedOption = computed(() => {
   const selectedOption = props.options.find(({ value }) => props.modelValue === value)
   return selectedOption?.name ?? props.defaultButtonLabel
 })
+
+
+const handleClickOnOption = (value: string) => {
+  emit('update:modelValue', value)
+  closeElement()
+}
 
 
 </script>
@@ -41,7 +46,7 @@ const selectedOption = computed(() => {
 <template> 
   <custom-label :label="label"
                 :error-message="errorMessage"
-                @focus="openElement">
+                @click.prevent="openElement">
     <custom-dropdown class="custom-select"
                      :is-open="isOpen"
                      :button-label="selectedOption"
@@ -52,7 +57,7 @@ const selectedOption = computed(() => {
             :key="option.value"
             class="custom-select__list-item"
             :value="option.value"
-            @click="emit('update:modelValue', option.value)">
+            @click.prevent.stop="handleClickOnOption(option.value)">
           {{ option.name }}
         </li>
       </ul>
@@ -78,6 +83,7 @@ const selectedOption = computed(() => {
 
   &__list-item {
     padding: 0.875rem 0.625rem;
+    color: var(--dark-blue);
 
     &:hover {
       background: var(--light-grey);

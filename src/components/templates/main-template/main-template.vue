@@ -28,7 +28,7 @@ characterStore.getMessages()
 
 
       @media (min-width: 64rem) {  
-                width: 30rem;
+                width: 40rem;
            
       }
     }

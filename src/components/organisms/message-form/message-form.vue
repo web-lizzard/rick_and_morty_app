@@ -66,13 +66,15 @@ const handleSubmit = () => {
         @submit.prevent="handleSubmit">
     <custom-input v-model="formState.title"
                   label="Title"
-                  :error-message="rules.title" />
+                  :error-message="rules.title"
+                  placeholder="Enter title here" />
                 
     
     <custom-input v-model="formState.content"
                   label="Message"
                   :error-message="rules.content"
-                  :element="InputType.TEXTAREA" />
+                  :element="InputType.TEXTAREA" 
+                  placeholder="Enter message here" />
     
     <custom-select v-model="formState.characterId"
                    :error-message="rules.characterId"
